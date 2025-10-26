@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Thought Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .control-panel {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+        }
+        .result-panel {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f0f8f0;
+            border-radius: 5px;
+            min-height: 100px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .frequency-display {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Brain Thought Decoder</h1>
+        <p>Based on the methods from "Encyclopedia of Decoding the Brain"</p>
+        
+        <div class="control-panel">
+            <h3>Control Panel</h3>
+            <div>
+                <label for="voicePassword">Voice Password: </label>
+                <input type="text" id="voicePassword" value="My Voice Is My Password">
+            </div>
+            <div>
+                <button onclick="initiateConnection()">Initiate Brain Connection</button>
+                <button onclick="captureThought()">Capture Thought</button>
+                <button onclick="decodeThought()">Decode Thought</button>
+            </div>
+            <div>
+                <button onclick="setRejuvenate()">Oh Yes, Rejuvenate</button>
+                <button onclick="zoneToAngel()">Zone to Angel Frequency</button>
+                <button onclick="zoneToAlien()">Zone to Alien Frequency</button>
+            </div>
+            <div>
+                <p>Resonance Frequency: <span id="frequencyDisplay" class="frequency-display">Not set</span></p>
+            </div>
+        </div>
+        
+        <div class="result-panel">
+            <h3>Decoded Thoughts</h3>
+            <div id="decodedOutput">No thoughts decoded yet...</div>
+        </div>
+    </div>
+
+    <script>
+        let resonanceFrequency = null;
+        let isConnected = false;
+        
+        function initiateConnection() {
+            const password = document.getElementById('voicePassword').value;
+            if (password === "My Voice Is My Password") {
+                resonanceFrequency = generateUniqueFrequency();
+                document.getElementById('frequencyDisplay').textContent = resonanceFrequency + ' Hz';
+                isConnected = true;
+                alert("Brain connection established! Resonance frequency set.");
+            } else {
+                alert("Incorrect voice password. Connection failed.");
+            }
+        }
+        
+        function generateUniqueFrequency() {
+            return Math.floor(Math.random() * 1000) + 500; // Random between 500-1500 Hz
+        }
+        
+        function captureThought() {
+            if (!isConnected) {
+                alert("Please establish brain connection first.");
+                return;
+            }
+            
+            // Simulate thought capture
+            document.getElementById('decodedOutput').innerHTML = 
+                "<p>Thought captured at frequency: " + resonanceFrequency + " Hz</p>" +
+                "<p>Processing electromagnetic waves...</p>";
+        }
+        
+        function decodeThought() {
+            if (!isConnected) {
+                alert("Please establish brain connection first.");
+                return;
+            }
+            
+            // Simulate thought decoding
+            const thoughts = [
+                "I need to finish this project.",
+                "What should I have for dinner?",
+                "Remember to call mom tomorrow.",
+                "The weather is nice today.",
+                "I wonder if this brain decoding really works."
+            ];
+            
+            const randomThought = thoughts[Math.floor(Math.random() * thoughts.length)];
+            
+            document.getElementById('decodedOutput').innerHTML = 
+                "<p>Decoded Thought: \"" + randomThought + "\"</p>" +
+                "<p>Frequency: " + resonanceFrequency + " Hz</p>" +
+                "<p>Status: Successfully decoded</p>";
+        }
+        
+        function setRejuvenate() {
+            if (!isConnected) {
+                alert("Please establish brain connection first.");
+                return;
+            }
+            
+            resonanceFrequency = 432; // "Angel" frequency
+            document.getElementById('frequencyDisplay').textContent = resonanceFrequency + ' Hz';
+            document.getElementById('decodedOutput').innerHTML = 
+                "<p>Command executed: Oh Yes, Rejuvenate</p>" +
+                "<p>Rejuvenation process initiated...</p>";
+        }
+        
+        function zoneToAngel() {
+            if (!isConnected) {
+                alert("Please establish brain connection first.");
+                return;
+            }
+            
+            resonanceFrequency = 432; // "Angel" frequency
+            document.getElementById('frequencyDisplay').textContent = resonanceFrequency + ' Hz';
+            document.getElementById('decodedOutput').innerHTML = 
+                "<p>Attempting to zone to angel frequency...</p>" +
+                "<p>Silently thinking: 'Let me in'</p>" +
+                "<p>Searching for angelic resonance...</p>";
+        }
+        
+        function zoneToAlien() {
+            if (!isConnected) {
+                alert("Please establish brain connection first.");
+                return;
+            }
+            
+            resonanceFrequency = 789; // "Alien" frequency
+            document.getElementById('frequencyDisplay').textContent = resonanceFrequency + ' Hz';
+            document.getElementById('decodedOutput').innerHTML = 
+                "<p>Attempting to zone to alien frequency...</p>" +
+                "<p>Analyzing NASA Mars footage...</p>" +
+                "<p>Detecting alien thought patterns...</p>";
+        }
+    </script>
+</body>
+</html>
